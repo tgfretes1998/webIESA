@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IESA | Proyecto Final Integrador</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      color: #333;
+      margin: 0;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background-color: #800000;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 1.6em;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      background-color: #a00000;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      padding: 10px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+      color: #f8d7da;
+    }
+
+    section {
+      padding: 40px 20px;
+    }
+
+    /* --- CLIMA --- */
+    #clima {
+      text-align: center;
+      color: #800000;
+    }
+
+    #clima input, #clima button {
+      border: 2px solid #800000;
+      border-radius: 8px;
+      padding: 10px 15px;
+      margin: 10px;
+      font-size: 16px;
+      background-color: white;
+      color: #800000;
+    }
+
+    #clima button:hover {
+      background-color: #800000;
+      color: white;
+    }
+
+    .resultado {
+      margin-top: 25px;
+      font-size: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      display: inline-block;
+      box-shadow: 0 0 10px #800000;
+    }
+
+    iframe {
+      border: 2px solid #800000;
+      border-radius: 10px;
+      width: 90%;
+      height: 350px;
+      margin-top: 25px;
+      box-shadow: 0 0 10px #800000;
+    }
+
+    /* --- NOTAS --- */
+    h1, h2 {
+      color: #800000;
+      font-weight: bold;
+    }
+
+    table th {
+      background-color: #d9d9d9;
+      color: #800000;
+    }
+
+    table td, table th {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+
+    /* --- IA --- */
+    #ia {
+      background-color: #e6e6e6;
+      color: #333;
+    }
+
+    #ia button {
+      background-color: #800000;
+      color: white;
+      padding: 8px 20px;
+      border-radius: 5px;
+    }
+
+    #ia button:hover {
+      background-color: #a00000;
+    }
+
+    #ia textarea {
+      width: 100%;
+      border: 2px solid #800000;
+      border-radius: 5px;
+      padding: 10px;
+      resize: none;
+    }
+
+    footer {
+      background-color: #800000;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<header>IESA – Proyecto Final Integrador</header>
+<nav>
+  <a href="#clima">Clima</a>
+  <a href="#notas">Notas</a>
+  <a href="#ia">IA Generativa</a>
+</nav>
+
+<!-- SECCIÓN CLIMA -->
+<section id="clima">
+  <h1>🌤 Buscador de Clima</h1>
+  <p>Ingresá una ciudad para conocer su clima actual y su ubicación:</p>
+  <input type="text" id="ciudad" placeholder="Ejemplo: Posadas, Misiones">
+  <button onclick="buscarClima()">Buscar</button>
+  <div id="resultado"></div>
+  <div id="mapa"></div>
+</section>
+
+<!-- SECCIÓN NOTAS -->
+<section id="notas">
+  <div class="max-w-5xl mx-auto bg-white rounded-xl shadow p-6">
+    <h1 class="text-2xl mb-4 text-center">📘 Carga de Notas - IESA</h1>
+
+    <form id="form-notas" class="grid md:grid-cols-2 gap-4">
+      <div>
+        <label>Nombre del Alumno *</label>
+        <input id="nombre" type="text" required class="w-full border px-3 py-2 rounded" />
+      </div>
+      <div>
+        <label>DNI *</label>
+        <input id="dni" type="text" required class="w-full border px-3 py-2 rounded" pattern="[0-9]{7,8}" title="Ingrese un DNI válido (7 u 8 dígitos)" />
+      </div>
+      <div>
+        <label>Materia *</label>
+        <select id="materia" required class="w-full border px-3 py-2 rounded">
+          <option value="">-- Seleccionar --</option>
+          <option>Programación</option>
+          <option>Laboratorio</option>
+          <option>Sistemas Operativos</option>
+          <option>Matemáticas</option>
+          <option>Lógica</option>
+          <option>Inglés</option>
+        </select>
+      </div>
+      <div>
+        <label>Email *</label>
+        <input id="email" type="email" required class="w-full border px-3 py-2 rounded" />
+      </div>
+      <div><label>Parcial 1</label><input id="p1" type="number" min="1" max="10" class="w-full border px-3 py-2 rounded" /></div>
+      <div><label>Parcial 2</label><input id="p2" type="number" min="1" max="10" class="w-full border px-3 py-2 rounded" /></div>
+      <div><label>Parcial 3</label><input id="p3" type="number" min="1" max="10" class="w-full border px-3 py-2 rounded" /></div>
+      <div><label>Recuperatorio</label><input id="recuperatorio" type="number" min="1" max="10" class="w-full border px-3 py-2 rounded" /></div>
+
+      <div class="col-span-2 flex gap-3 mt-4">
+        <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded">Guardar</button>
+        <button type="reset" class="border px-4 py-2 rounded">Limpiar</button>
+      </div>
+    </form>
+
+    <hr class="my-6">
+    <h2 class="text-lg font-semibold mb-2">Notas Guardadas</h2>
+    <table class="w-full text-sm border-collapse" id="tabla">
+      <thead>
+        <tr>
+          <th>Alumno</th><th>DNI</th><th>Email</th><th>Materia</th>
+          <th>P1</th><th>P2</th><th>P3</th><th>Recup</th>
+          <th>Promedio</th><th>Estado</th><th>Acción</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SECCIÓN IA GENERATIVA -->
+<section id="ia">
+  <div class="max-w-4xl mx-auto bg-white p-6 rounded-xl shadow">
+    <h1 class="text-2xl text-center mb-4">🧠 Unidad 6 – Aplicación de la IA Generativa</h1>
+    <p>La <b>Inteligencia Artificial Generativa</b> puede crear textos, imágenes, música o código a partir de patrones aprendidos. 
+    En esta simulación, probá una mini demostración:</p>
+    <textarea id="userInput" rows="3" placeholder="Ejemplo: ¿Qué puede hacer la IA generativa?"></textarea>
+    <button onclick="generarRespuesta()">Generar</button>
+    <div id="respuesta" class="mt-4 p-3 border rounded"></div>
+  </div>
+</section>
+
+<footer>
+  © 2025 - Instituto de Estudios Superiores Argentino (IESA) | Proyecto Final Integrador
+</footer>
+
+<script>
+  // CLIMA
+  async function buscarClima() {
+    const ciudad = document.getElementById("ciudad").value.trim();
+    const resultado = document.getElementById("resultado");
+    const mapa = document.getElementById("mapa");
+
+    if (!ciudad) {
+      resultado.innerHTML = "<p>⚠️ Ingresá una ciudad.</p>";
+      mapa.innerHTML = "";
+      return;
+    }
+
+    resultado.innerHTML = "<p>⏳ Buscando datos del clima...</p>";
+    mapa.innerHTML = "";
+
+    try {
+      const geoRes = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${ciudad}`);
+      const geoData = await geoRes.json();
+      if (geoData.length === 0) {
+        resultado.innerHTML = "<p>❌ Ciudad no encontrada.</p>";
+        return;
+      }
+      const lat = geoData[0].lat;
+      const lon = geoData[0].lon;
+      const climaRes = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`);
+      const climaData = await climaRes.json();
+
+      const temp = climaData.current_weather.temperature;
+      const viento = climaData.current_weather.windspeed;
+
+      resultado.innerHTML = `
+        <div class="resultado">
+          🌍 <b>${ciudad}</b><br>
+          🌡 Temperatura: <b>${temp} °C</b><br>
+          💨 Viento: <b>${viento} km/h</b>
+        </div>`;
+      mapa.innerHTML = `<iframe src="https://www.google.com/maps?q=${lat},${lon}&z=10&output=embed"></iframe>`;
+    } catch {
+      resultado.innerHTML = "<p>⚠️ Error al obtener datos del clima.</p>";
+    }
+  }
+
+  // NOTAS
+  const KEY = "notas_iesa";
+  const form = document.getElementById("form-notas");
+  const tabla = document.querySelector("#tabla tbody");
+
+  form.onsubmit = e => {
+    e.preventDefault();
+    const alumno = {
+      nombre: nombre.value,
+      dni: dni.value,
+      email: email.value,
+      materia: materia.value,
+      p1: parseFloat(p1.value) || 0,
+      p2: parseFloat(p2.value) || 0,
+      p3: parseFloat(p3.value) || 0,
+      recuperatorio: parseFloat(recuperatorio.value) || 0
+    };
+    const promedio = ((alumno.p1 + alumno.p2 + alumno.p3 + alumno.recuperatorio) / 4).toFixed(2);
+    alumno.promedio = promedio;
+    alumno.estado = promedio >= 8 ? "PROMOCIONA" : promedio >= 6 ? "REGULAR" : "DESAPROBADO";
+
+    const datos = JSON.parse(localStorage.getItem(KEY) || "[]");
+    datos.push(alumno);
+    localStorage.setItem(KEY, JSON.stringify(datos));
+    form.reset();
+    cargar();
+  };
+
+  function cargar() {
+    const datos = JSON.parse(localStorage.getItem(KEY) || "[]");
+    tabla.innerHTML = datos.map((a, i) => `
+      <tr>
+        <td>${a.nombre}</td><td>${a.dni}</td><td>${a.email}</td><td>${a.materia}</td>
+        <td>${a.p1}</td><td>${a.p2}</td><td>${a.p3}</td><td>${a.recuperatorio}</td>
+        <td><b>${a.promedio}</b></td>
+        <td style="color:${a.estado=='PROMOCIONA'?'green':a.estado=='REGULAR'?'orange':'red'}">${a.estado}</td>
+        <td><button onclick="borrar(${i})" class="bg-red-600 text-white px-2 py-1 rounded text-xs">Borrar</button></td>
+      </tr>`).join("");
+  }
+
+  function borrar(i) {
+    const datos = JSON.parse(localStorage.getItem(KEY) || "[]");
+    datos.splice(i, 1);
+    localStorage.setItem(KEY, JSON.stringify(datos));
+    cargar();
+  }
+
+  cargar();
+
+  // IA GENERATIVA SIMULADA
+  function generarRespuesta() {
+    const entrada = document.getElementById("userInput").value.trim();
+    const salida = document.getElementById("respuesta");
+    if (!entrada) {
+      salida.innerHTML = "⚠️ Escribí una pregunta para la IA.";
+      return;
+    }
+    const respuestas = [
+      "La IA generativa crea textos, imágenes o música aprendiendo de ejemplos previos.",
+      "Puede asistir en educación, diseño, programación y medicina.",
+      "Combina redes neuronales y modelos de lenguaje como GPT o DALL·E.",
+      "Su aplicación práctica mejora la productividad y la creatividad humana."
+    ];
+    salida.innerHTML = respuestas[Math.floor(Math.random() * respuestas.length)];
+  }
+</script>
+</body>
+</html>
