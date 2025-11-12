@@ -18,10 +18,18 @@
       background-color: #800000;
       color: white;
       text-align: center;
-      padding: 20px 0;
-      font-size: 1.6em;
-      font-weight: bold;
+      padding: 15px 0;
+      font-size: 1.5em;
       letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    header img {
+      height: 50px;
+      width: auto;
     }
 
     nav {
@@ -49,6 +57,12 @@
       padding: 40px 20px;
     }
 
+    h1, h2 {
+      color: #800000;
+      font-weight: bold;
+      text-align: center;
+    }
+
     /* --- CLIMA --- */
     #clima {
       text-align: center;
@@ -56,18 +70,21 @@
     }
 
     #clima input, #clima button {
-      border: 2px solid #800000;
+      border: 2px solid #000;
       border-radius: 8px;
       padding: 10px 15px;
       margin: 10px;
       font-size: 16px;
-      background-color: white;
-      color: #800000;
+    }
+
+    #clima button {
+      background-color: #006400;
+      color: white;
+      border: 2px solid black;
     }
 
     #clima button:hover {
-      background-color: #800000;
-      color: white;
+      background-color: #009900;
     }
 
     .resultado {
@@ -89,46 +106,94 @@
       box-shadow: 0 0 10px #800000;
     }
 
-    /* --- NOTAS --- */
-    h1, h2 {
-      color: #800000;
-      font-weight: bold;
-    }
-
-    table th {
-      background-color: #d9d9d9;
-      color: #800000;
-    }
-
-    table td, table th {
-      border: 1px solid #ccc;
-      padding: 8px;
-      text-align: center;
-    }
-
     /* --- IA --- */
     #ia {
       background-color: #e6e6e6;
-      color: #333;
-    }
-
-    #ia button {
-      background-color: #800000;
-      color: white;
-      padding: 8px 20px;
-      border-radius: 5px;
-    }
-
-    #ia button:hover {
-      background-color: #a00000;
+      padding: 50px 20px;
     }
 
     #ia textarea {
       width: 100%;
       border: 2px solid #800000;
-      border-radius: 5px;
+      border-radius: 10px;
       padding: 10px;
       resize: none;
+    }
+
+    #ia button {
+      background-color: #006400;
+      color: white;
+      border: 2px solid black;
+      border-radius: 8px;
+      padding: 10px 20px;
+      margin-top: 10px;
+    }
+
+    #ia button:hover {
+      background-color: #008000;
+    }
+
+    /* --- HISTORIA --- */
+    #historia {
+      background-color: #fff;
+      padding: 50px 20px;
+      color: #333;
+    }
+
+    .galeria {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .galeria img {
+      border-radius: 10px;
+      box-shadow: 0 0 10px #555;
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    /* --- CARGA DE ALUMNOS --- */
+    #alumnos {
+      background-color: #e6e6e6;
+      padding: 50px 20px;
+    }
+
+    #alumnos input, #alumnos select {
+      width: 100%;
+      border: 2px solid #000;
+      border-radius: 8px;
+      padding: 8px;
+      margin-top: 4px;
+    }
+
+    #alumnos button {
+      background-color: #006400;
+      color: white;
+      border: 2px solid black;
+      border-radius: 8px;
+      padding: 8px 16px;
+      margin-top: 10px;
+    }
+
+    #alumnos button:hover {
+      background-color: #008000;
+    }
+
+    table th {
+      background-color: #d9d9d9;
+      color: #800000;
+      border: 1px solid #ccc;
+      padding: 8px;
+    }
+
+    table td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
     }
 
     footer {
@@ -136,19 +201,40 @@
       color: white;
       text-align: center;
       padding: 15px;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
 
-<header>IESA – Proyecto Final Integrador</header>
+<header>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Transparent_Logo.png" alt="Logo IESA">
+  IESA – Proyecto Final Integrador
+</header>
+
 <nav>
+  <a href="#historia">Historia del Instituto</a>
   <a href="#clima">Clima</a>
-  <a href="#notas">Notas</a>
-  <a href="#ia">IA Generativa</a>
+  <a href="#alumnos">Carga de Alumnos</a>
+  <a href="#ia">Unidad 6 – IA Generativa</a>
 </nav>
 
-<!-- SECCIÓN CLIMA -->
+<!-- HISTORIA -->
+<section id="historia">
+  <h1>📚 Historia del Instituto IESA</h1>
+  <p style="text-align:center; max-width:900px; margin:auto; font-size:17px;">
+    El <b>Instituto de Estudios Superiores Argentino (IESA)</b> es una institución educativa dedicada a la formación profesional y tecnológica.
+    Destaca especialmente en la carrera de <b>Analista de Sistemas</b>, donde los estudiantes aprenden a desarrollar software, diseñar bases de datos 
+    y gestionar proyectos informáticos aplicando las mejores prácticas de programación y redes.
+  </p>
+  <div class="galeria">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Computer_programming_students.jpg" alt="Alumnos programando">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Computer_classroom.jpg" alt="Laboratorio de informática">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Teacher_in_computer_lab.jpg" alt="Docente guiando alumnos">
+  </div>
+</section>
+
+<!-- CLIMA -->
 <section id="clima">
   <h1>🌤 Buscador de Clima</h1>
   <p>Ingresá una ciudad para conocer su clima actual y su ubicación:</p>
@@ -158,55 +244,38 @@
   <div id="mapa"></div>
 </section>
 
-<!-- SECCIÓN NOTAS -->
-<section id="notas">
-  <div class="max-w-5xl mx-auto bg-white rounded-xl shadow p-6">
-    <h1 class="text-2xl mb-4 text-center">📘 Carga de Notas - IESA</h1>
-
-    <form id="form-notas" class="grid md:grid-cols-2 gap-4">
-      <div>
-        <label>Nombre del Alumno *</label>
-        <input id="nombre" type="text" required class="w-full border px-3 py-2 rounded" />
-      </div>
-      <div>
-        <label>DNI *</label>
-        <input id="dni" type="text" required class="w-full border px-3 py-2 rounded" pattern="[0-9]{7,8}" title="Ingrese un DNI válido (7 u 8 dígitos)" />
-      </div>
-      <div>
-        <label>Materia *</label>
-        <select id="materia" required class="w-full border px-3 py-2 rounded">
-          <option value="">-- Seleccionar --</option>
-          <option>Programación</option>
-          <option>Laboratorio</option>
-          <option>Sistemas Operativos</option>
-          <option>Matemáticas</option>
-          <option>Lógica</option>
-          <option>Inglés</option>
+<!-- CARGA DE ALUMNOS -->
+<section id="alumnos">
+  <h1>🧾 Carga de Alumnos</h1>
+  <p style="text-align:center;">Completá tus datos para inscribirte en un curso del IESA:</p>
+  <div class="max-w-4xl mx-auto bg-white rounded-xl shadow p-6">
+    <form id="form-alumno" class="grid md:grid-cols-2 gap-4">
+      <div><label>Nombre</label><input id="nombre" required></div>
+      <div><label>Apellido</label><input id="apellido" required></div>
+      <div><label>DNI</label><input id="dni" type="number" required></div>
+      <div><label>Email</label><input id="email" type="email" required></div>
+      <div class="col-span-2">
+        <label>Curso</label>
+        <select id="curso" required>
+          <option value="">-- Seleccionar curso --</option>
+          <option>Generación de IA</option>
+          <option>Redes</option>
+          <option>Taller de Computación</option>
+          <option>Laboratorio de Programación</option>
         </select>
       </div>
-      <div>
-        <label>Email *</label>
-        <input id="email" type="email" required class="w-full border px-3 py-2 rounded" />
-      </div>
-      <div><label>Parcial 1</label><input id="p1" type="number" min="1" max="10" class="w-full border px-3 py-2 rounded" /></div>
-      <div><label>Parcial 2</label><input id="p2" type="number" min="1" max="10" class="w-full border px-3 py-2 rounded" /></div>
-      <div><label>Parcial 3</label><input id="p3" type="number" min="1" max="10" class="w-full border px-3 py-2 rounded" /></div>
-      <div><label>Recuperatorio</label><input id="recuperatorio" type="number" min="1" max="10" class="w-full border px-3 py-2 rounded" /></div>
-
       <div class="col-span-2 flex gap-3 mt-4">
-        <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded">Guardar</button>
-        <button type="reset" class="border px-4 py-2 rounded">Limpiar</button>
+        <button type="submit">Guardar</button>
+        <button type="reset" style="background-color:#ccc; border:2px solid black;">Limpiar</button>
       </div>
     </form>
 
     <hr class="my-6">
-    <h2 class="text-lg font-semibold mb-2">Notas Guardadas</h2>
-    <table class="w-full text-sm border-collapse" id="tabla">
+    <h2 class="text-lg font-semibold mb-2 text-center">📋 Alumnos Inscritos</h2>
+    <table class="w-full text-sm border-collapse" id="tabla-alumnos">
       <thead>
         <tr>
-          <th>Alumno</th><th>DNI</th><th>Email</th><th>Materia</th>
-          <th>P1</th><th>P2</th><th>P3</th><th>Recup</th>
-          <th>Promedio</th><th>Estado</th><th>Acción</th>
+          <th>Nombre</th><th>Apellido</th><th>DNI</th><th>Email</th><th>Curso</th><th>Acción</th>
         </tr>
       </thead>
       <tbody></tbody>
@@ -214,15 +283,19 @@
   </div>
 </section>
 
-<!-- SECCIÓN IA GENERATIVA -->
+<!-- UNIDAD 6 - IA GENERATIVA -->
 <section id="ia">
-  <div class="max-w-4xl mx-auto bg-white p-6 rounded-xl shadow">
-    <h1 class="text-2xl text-center mb-4">🧠 Unidad 6 – Aplicación de la IA Generativa</h1>
-    <p>La <b>Inteligencia Artificial Generativa</b> puede crear textos, imágenes, música o código a partir de patrones aprendidos. 
-    En esta simulación, probá una mini demostración:</p>
-    <textarea id="userInput" rows="3" placeholder="Ejemplo: ¿Qué puede hacer la IA generativa?"></textarea>
-    <button onclick="generarRespuesta()">Generar</button>
-    <div id="respuesta" class="mt-4 p-3 border rounded"></div>
+  <h1>🧠 Unidad 6 – Inteligencia Artificial Generativa</h1>
+  <p style="text-align:center; max-width:900px; margin:auto;">
+    La <b>IA Generativa</b> crea nuevos contenidos (textos, imágenes o código) a partir del aprendizaje automático.  
+    Usá el formulario para hacer una consulta y ver cómo responde un modelo de IA.
+  </p>
+
+  <div class="max-w-3xl mx-auto bg-white p-6 rounded-xl shadow mt-6">
+    <h2 class="text-xl mb-3 text-center">💬 Consultas sobre IA</h2>
+    <textarea id="userInput" rows="3" placeholder="Ejemplo: ¿Cómo aprende la IA generativa?"></textarea><br>
+    <button onclick="generarRespuesta()">Responder</button>
+    <div id="respuesta" class="mt-4 p-3 border rounded bg-gray-100"></div>
   </div>
 </section>
 
@@ -231,7 +304,7 @@
 </footer>
 
 <script>
-  // CLIMA
+  // --- CLIMA ---
   async function buscarClima() {
     const ciudad = document.getElementById("ciudad").value.trim();
     const resultado = document.getElementById("resultado");
@@ -253,6 +326,7 @@
         resultado.innerHTML = "<p>❌ Ciudad no encontrada.</p>";
         return;
       }
+
       const lat = geoData[0].lat;
       const lon = geoData[0].lon;
       const climaRes = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`);
@@ -267,62 +341,52 @@
           🌡 Temperatura: <b>${temp} °C</b><br>
           💨 Viento: <b>${viento} km/h</b>
         </div>`;
-      mapa.innerHTML = `<iframe src="https://www.google.com/maps?q=${lat},${lon}&z=10&output=embed"></iframe>`;
+      mapa.innerHTML = `<iframe src="https://www.google.com/maps?q=${lat},${lon}&z=12&output=embed"></iframe>`;
     } catch {
       resultado.innerHTML = "<p>⚠️ Error al obtener datos del clima.</p>";
     }
   }
 
-  // NOTAS
-  const KEY = "notas_iesa";
-  const form = document.getElementById("form-notas");
-  const tabla = document.querySelector("#tabla tbody");
+  // --- CARGA DE ALUMNOS ---
+  const KEY_ALUMNOS = "alumnos_iesa";
+  const formAlumno = document.getElementById("form-alumno");
+  const tabla = document.querySelector("#tabla-alumnos tbody");
 
-  form.onsubmit = e => {
+  formAlumno.onsubmit = e => {
     e.preventDefault();
     const alumno = {
       nombre: nombre.value,
+      apellido: apellido.value,
       dni: dni.value,
       email: email.value,
-      materia: materia.value,
-      p1: parseFloat(p1.value) || 0,
-      p2: parseFloat(p2.value) || 0,
-      p3: parseFloat(p3.value) || 0,
-      recuperatorio: parseFloat(recuperatorio.value) || 0
+      curso: curso.value
     };
-    const promedio = ((alumno.p1 + alumno.p2 + alumno.p3 + alumno.recuperatorio) / 4).toFixed(2);
-    alumno.promedio = promedio;
-    alumno.estado = promedio >= 8 ? "PROMOCIONA" : promedio >= 6 ? "REGULAR" : "DESAPROBADO";
-
-    const datos = JSON.parse(localStorage.getItem(KEY) || "[]");
+    const datos = JSON.parse(localStorage.getItem(KEY_ALUMNOS) || "[]");
     datos.push(alumno);
-    localStorage.setItem(KEY, JSON.stringify(datos));
-    form.reset();
-    cargar();
+    localStorage.setItem(KEY_ALUMNOS, JSON.stringify(datos));
+    formAlumno.reset();
+    cargarAlumnos();
   };
 
-  function cargar() {
-    const datos = JSON.parse(localStorage.getItem(KEY) || "[]");
+  function cargarAlumnos() {
+    const datos = JSON.parse(localStorage.getItem(KEY_ALUMNOS) || "[]");
     tabla.innerHTML = datos.map((a, i) => `
       <tr>
-        <td>${a.nombre}</td><td>${a.dni}</td><td>${a.email}</td><td>${a.materia}</td>
-        <td>${a.p1}</td><td>${a.p2}</td><td>${a.p3}</td><td>${a.recuperatorio}</td>
-        <td><b>${a.promedio}</b></td>
-        <td style="color:${a.estado=='PROMOCIONA'?'green':a.estado=='REGULAR'?'orange':'red'}">${a.estado}</td>
-        <td><button onclick="borrar(${i})" class="bg-red-600 text-white px-2 py-1 rounded text-xs">Borrar</button></td>
+        <td>${a.nombre}</td><td>${a.apellido}</td><td>${a.dni}</td><td>${a.email}</td><td>${a.curso}</td>
+        <td><button onclick="borrarAlumno(${i})" style="background-color:#a00000;color:white;border:1px solid black;border-radius:5px;padding:3px 8px;">Borrar</button></td>
       </tr>`).join("");
   }
 
-  function borrar(i) {
-    const datos = JSON.parse(localStorage.getItem(KEY) || "[]");
+  function borrarAlumno(i) {
+    const datos = JSON.parse(localStorage.getItem(KEY_ALUMNOS) || "[]");
     datos.splice(i, 1);
-    localStorage.setItem(KEY, JSON.stringify(datos));
-    cargar();
+    localStorage.setItem(KEY_ALUMNOS, JSON.stringify(datos));
+    cargarAlumnos();
   }
 
-  cargar();
+  cargarAlumnos();
 
-  // IA GENERATIVA SIMULADA
+  // --- IA GENERATIVA SIMULADA ---
   function generarRespuesta() {
     const entrada = document.getElementById("userInput").value.trim();
     const salida = document.getElementById("respuesta");
@@ -331,13 +395,14 @@
       return;
     }
     const respuestas = [
-      "La IA generativa crea textos, imágenes o música aprendiendo de ejemplos previos.",
-      "Puede asistir en educación, diseño, programación y medicina.",
-      "Combina redes neuronales y modelos de lenguaje como GPT o DALL·E.",
-      "Su aplicación práctica mejora la productividad y la creatividad humana."
+      "La IA generativa aprende patrones a partir de datos y puede crear nuevos textos o imágenes.",
+      "Usa redes neuronales para simular la creatividad humana.",
+      "Se aplica en educación, programación y arte digital.",
+      "Combina algoritmos de aprendizaje profundo con grandes modelos de lenguaje."
     ];
     salida.innerHTML = respuestas[Math.floor(Math.random() * respuestas.length)];
   }
 </script>
+
 </body>
 </html>
