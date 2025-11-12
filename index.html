@@ -3,278 +3,410 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal Institucional IESA</title>
+  <title>IESA | Proyecto Final Integrador</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
-      background-color: #d9d9d9;
-      color: #4b0000;
       font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      color: #333;
       margin: 0;
-      padding: 0;
+      scroll-behavior: smooth;
     }
 
     header {
-      background-color: #4b0000;
+      background-color: #800000;
       color: white;
       text-align: center;
-      padding: 10px;
+      padding: 15px 0;
+      font-size: 1.5em;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
     }
 
     header img {
-      width: 80px;
-      height: auto;
+      height: 50px;
+      width: auto;
     }
 
     nav {
-      background-color: #333;
+      background-color: #a00000;
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
+      gap: 25px;
       padding: 10px;
+      flex-wrap: wrap;
     }
 
-    nav button {
-      background-color: green;
+    nav a {
       color: white;
-      border: 2px solid black;
-      padding: 10px 20px;
-      cursor: pointer;
-      border-radius: 8px;
       font-weight: bold;
+      text-decoration: none;
       transition: 0.3s;
     }
 
-    nav button:hover {
-      background-color: #005500;
+    nav a:hover {
+      text-decoration: underline;
+      color: #f8d7da;
     }
 
     section {
-      display: none;
-      text-align: center;
-      padding: 20px;
+      padding: 40px 20px;
     }
 
-    section.active {
-      display: block;
-    }
-
-    img {
-      width: 60%;
-      max-width: 500px;
-      border-radius: 10px;
-      margin: 20px 0;
-    }
-
-    form {
-      background-color: #f5f5f5;
-      border: 2px solid #4b0000;
-      border-radius: 10px;
-      display: inline-block;
-      padding: 20px;
-      text-align: left;
-    }
-
-    label {
-      display: block;
-      margin-top: 10px;
+    h1, h2 {
+      color: #800000;
       font-weight: bold;
+      text-align: center;
     }
 
-    input, select, textarea {
-      width: 100%;
-      padding: 8px;
-      border: 1px solid #4b0000;
-      border-radius: 5px;
+    /* --- CLIMA --- */
+    #clima {
+      text-align: center;
+      color: #800000;
+    }
+
+    #clima input, #clima button {
+      border: 2px solid #000;
+      border-radius: 8px;
+      padding: 10px 15px;
+      margin: 10px;
+      font-size: 16px;
+    }
+
+    #clima button {
+      background-color: #006400;
+      color: white;
+      border: 2px solid black;
+    }
+
+    #clima button:hover {
+      background-color: #009900;
     }
 
     .resultado {
-      margin-top: 20px;
+      margin-top: 25px;
+      font-size: 20px;
       background-color: #fff;
       border-radius: 10px;
-      padding: 15px;
-      border: 1px solid #4b0000;
+      padding: 20px;
+      display: inline-block;
+      box-shadow: 0 0 10px #800000;
     }
 
     iframe {
-      border: 2px solid #4b0000;
+      border: 2px solid #800000;
       border-radius: 10px;
-      margin-top: 10px;
       width: 90%;
-      height: 250px;
+      height: 350px;
+      margin-top: 25px;
+      box-shadow: 0 0 10px #800000;
+    }
+
+    /* --- IA --- */
+    #ia {
+      background-color: #e6e6e6;
+      padding: 50px 20px;
+    }
+
+    #ia textarea {
+      width: 100%;
+      border: 2px solid #800000;
+      border-radius: 10px;
+      padding: 10px;
+      resize: none;
+    }
+
+    #ia button {
+      background-color: #006400;
+      color: white;
+      border: 2px solid black;
+      border-radius: 8px;
+      padding: 10px 20px;
+      margin-top: 10px;
+    }
+
+    #ia button:hover {
+      background-color: #008000;
+    }
+
+    /* --- HISTORIA --- */
+    #historia {
+      background-color: #fff;
+      padding: 50px 20px;
+      color: #333;
+    }
+
+    .galeria {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .galeria img {
+      border-radius: 10px;
+      box-shadow: 0 0 10px #555;
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    /* --- CARGA DE ALUMNOS --- */
+    #alumnos {
+      background-color: #e6e6e6;
+      padding: 50px 20px;
+    }
+
+    #alumnos input, #alumnos select {
+      width: 100%;
+      border: 2px solid #000;
+      border-radius: 8px;
+      padding: 8px;
+      margin-top: 4px;
+    }
+
+    #alumnos button {
+      background-color: #006400;
+      color: white;
+      border: 2px solid black;
+      border-radius: 8px;
+      padding: 8px 16px;
+      margin-top: 10px;
+    }
+
+    #alumnos button:hover {
+      background-color: #008000;
+    }
+
+    table th {
+      background-color: #d9d9d9;
+      color: #800000;
+      border: 1px solid #ccc;
+      padding: 8px;
+    }
+
+    table td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
     }
 
     footer {
-      background-color: #4b0000;
+      background-color: #800000;
       color: white;
       text-align: center;
-      padding: 10px;
+      padding: 15px;
       margin-top: 20px;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <img src="https://iesaeducativo.com/_next/image?url=%2Flogo%20negro.png&w=640&q=75" alt="Logo IESA">
-    <h1>Portal Institucional IESA</h1>
-  </header>
+<header>
+  <img src="https://iesaeducativo.com/_next/image?q=75&url=%2Flogo+negro.png&w=640" alt="Logo IESA">
+  IESA – Proyecto Final Integrador
+</header>
 
-  <nav>
-    <button onclick="mostrar('inicio')">Inicio</button>
-    <button onclick="mostrar('clima')">Clima</button>
-    <button onclick="mostrar('alumnos')">Carga de Alumnos</button>
-    <button onclick="mostrar('ia')">Unidad 6 - Inteligencia Artificial</button>
-  </nav>
+<nav>
+  <a href="#historia">Historia del Instituto</a>
+  <a href="#clima">Clima</a>
+  <a href="#alumnos">Carga de Alumnos</a>
+  <a href="#ia">Unidad 6 – IA Generativa</a>
+</nav>
 
-  <section id="inicio" class="active">
-    <h2>Bienvenidos al Instituto IESA</h2>
-    <p>Formando profesionales en tecnología y sistemas.</p>
-    <img src="https://www.euncet.es/wp-content/uploads/2023/02/estudiantes-programacion.jpg" alt="Alumnos de programación">
-    <img src="https://www.cetys.mx/noticias/wp-content/uploads/2021/10/Lab-de-computo-scaled.jpg" alt="Laboratorio de computación">
-  </section>
+<!-- HISTORIA -->
+<section id="historia">
+  <h1>📚 Historia del Instituto IESA</h1>
+  <p style="text-align:center; max-width:900px; margin:auto; font-size:17px;">
+    El <b>Instituto de Estudios Superiores Argentino (IESA)</b> es una institución educativa dedicada a la formación profesional y tecnológica.
+    Destaca especialmente en la carrera de <b>Analista de Sistemas</b>, donde los estudiantes aprenden a desarrollar software, diseñar bases de datos 
+    y gestionar proyectos informáticos aplicando las mejores prácticas de programación y redes.
+  </p>
+  <div class="galeria">
+    <img src="https://cdn.pixabay.com/photo/2015/01/08/18/25/startup-593324_1280.jpg" alt="Alumnos programando">
+    <img src="https://images.pexels.com/photos/18471480/pexels-photo-18471480.jpeg" alt="Alumnos programando">
+    <img src="https://images.pexels.com/photos/12899191/pexels-photo-12899191.jpeg" alt="Alumnos programando">
+  </div>
+</section>
 
-  <section id="clima">
-    <h2>Consulta el Clima</h2>
-    <input type="text" id="ciudad" placeholder="Ingresa una ciudad...">
-    <button onclick="buscarClima()">Buscar</button>
-    <div id="resultadoClima" class="resultado"></div>
-    <iframe id="mapa" loading="lazy"></iframe>
-  </section>
+<!-- CLIMA -->
+<section id="clima">
+  <h1>🌤 Buscador de Clima</h1>
+  <p>Ingresá una ciudad para conocer su clima actual y su ubicación:</p>
+  <input type="text" id="ciudad" placeholder="Ejemplo: Posadas, Misiones">
+  <button onclick="buscarClima()">Buscar</button>
+  <div id="resultado"></div>
+  <div id="mapa"></div>
+</section>
 
-  <section id="alumnos">
-    <h2>Formulario de Inscripción</h2>
-    <form id="formAlumno">
-      <label>Nombre:</label>
-      <input type="text" id="nombre" required>
-
-      <label>Apellido:</label>
-      <input type="text" id="apellido" required>
-
-      <label>DNI:</label>
-      <input type="number" id="dni" required>
-
-      <label>Email:</label>
-      <input type="email" id="email" required>
-
-      <label>Curso:</label>
-      <select id="curso" required>
-        <option value="">Seleccionar...</option>
-        <option>Generación de IA</option>
-        <option>Redes</option>
-        <option>Taller de Computación</option>
-        <option>Laboratorio de Programación</option>
-      </select>
-
-      <button type="submit">Guardar Inscripción</button>
+<!-- CARGA DE ALUMNOS -->
+<section id="alumnos">
+  <h1>🧾 Carga de Alumnos</h1>
+  <p style="text-align:center;">Completá tus datos para inscribirte en un curso del IESA:</p>
+  <div class="max-w-4xl mx-auto bg-white rounded-xl shadow p-6">
+    <form id="form-alumno" class="grid md:grid-cols-2 gap-4">
+      <div><label>Nombre</label><input id="nombre" required></div>
+      <div><label>Apellido</label><input id="apellido" required></div>
+      <div><label>DNI</label><input id="dni" type="number" required></div>
+      <div><label>Email</label><input id="email" type="email" required></div>
+      <div class="col-span-2">
+        <label>Curso</label>
+        <select id="curso" required>
+          <option value="">-- Seleccionar curso --</option>
+          <option>Generación de IA</option>
+          <option>Redes</option>
+          <option>Taller de Computación</option>
+          <option>Laboratorio de Programación</option>
+        </select>
+      </div>
+      <div class="col-span-2 flex gap-3 mt-4">
+        <button type="submit">Guardar</button>
+        <button type="reset" style="background-color:#ccc; border:2px solid black;">Limpiar</button>
+      </div>
     </form>
 
-    <div id="listaAlumnos" class="resultado">
-      <h3>Alumnos Inscritos</h3>
-      <ul id="alumnosGuardados"></ul>
-    </div>
-  </section>
+    <hr class="my-6">
+    <h2 class="text-lg font-semibold mb-2 text-center">📋 Alumnos Inscritos</h2>
+    <table class="w-full text-sm border-collapse" id="tabla-alumnos">
+      <thead>
+        <tr>
+          <th>Nombre</th><th>Apellido</th><th>DNI</th><th>Email</th><th>Curso</th><th>Acción</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
 
-  <section id="ia">
-    <h2>Unidad 6 - Inteligencia Artificial</h2>
-    <p>Responde brevemente las siguientes preguntas:</p>
-    <form id="formIA">
-      <label>1. ¿Qué entendés por Inteligencia Artificial?</label>
-      <textarea id="p1"></textarea>
+<!-- UNIDAD 6 - IA GENERATIVA -->
+<section id="ia">
+  <h1>🧠 Unidad 6 – Inteligencia Artificial Generativa</h1>
+  <p style="text-align:center; max-width:900px; margin:auto;">
+    La <b>IA Generativa</b> crea nuevos contenidos (textos, imágenes o código) a partir del aprendizaje automático.  
+    Usá el formulario para hacer una consulta y ver cómo responde un modelo de IA.
+  </p>
 
-      <label>2. ¿Qué herramientas de IA conocés?</label>
-      <textarea id="p2"></textarea>
+  <div class="max-w-3xl mx-auto bg-white p-6 rounded-xl shadow mt-6">
+    <h2 class="text-xl mb-3 text-center">💬 Consultas sobre IA</h2>
+    <textarea id="userInput" rows="3" placeholder="Ejemplo: ¿Cómo aprende la IA generativa?"></textarea><br>
+    <button onclick="generarRespuesta()">Responder</button>
+    <div id="respuesta" class="mt-4 p-3 border rounded bg-gray-100"></div>
+  </div>
+</section>
 
-      <label>3. ¿Qué ventajas tiene aplicar IA en la educación?</label>
-      <textarea id="p3"></textarea>
+<footer>
+  © 2025 - Instituto de Estudios Superiores Argentino (IESA) | Proyecto Final Integrador
+</footer>
 
-      <label>4. ¿Cómo imaginás la IA dentro de 10 años?</label>
-      <textarea id="p4"></textarea>
+<script>
+  // --- CLIMA ---
+  async function buscarClima() {
+    const ciudad = document.getElementById("ciudad").value.trim();
+    const resultado = document.getElementById("resultado");
+    const mapa = document.getElementById("mapa");
 
-      <button type="submit">Enviar respuestas</button>
-    </form>
-    <div id="respuestasIA" class="resultado"></div>
-  </section>
-
-  <footer>
-    <p>Instituto IESA © 2025 - Todos los derechos reservados</p>
-  </footer>
-
-  <script>
-    function mostrar(seccion) {
-      document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
-      document.getElementById(seccion).classList.add("active");
+    if (!ciudad) {
+      resultado.innerHTML = "<p>⚠️ Ingresá una ciudad.</p>";
+      mapa.innerHTML = "";
+      return;
     }
 
-    // === CLIMA ===
-    async function buscarClima() {
-      const ciudad = document.getElementById("ciudad").value;
-      if (!ciudad) return alert("Ingrese una ciudad");
+    resultado.innerHTML = "<p>⏳ Buscando datos del clima...</p>";
+    mapa.innerHTML = "";
 
-      const apiKey = "e1a4a6e39bd3e3e1b004c45f4e7f1e22"; // Ejemplo pública
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&units=metric&appid=${apiKey}&lang=es`;
-
-      try {
-        const resp = await fetch(url);
-        if (!resp.ok) throw new Error("Ciudad no encontrada");
-        const data = await resp.json();
-        document.getElementById("resultadoClima").innerHTML = `
-          <h3>${data.name}, ${data.sys.country}</h3>
-          <p>🌡 Temperatura: ${data.main.temp} °C</p>
-          <p>💧 Humedad: ${data.main.humidity}%</p>
-          <p>🌍 Condición: ${data.weather[0].description}</p>
-        `;
-        document.getElementById("mapa").src =
-          `https://www.google.com/maps?q=${data.coord.lat},${data.coord.lon}&z=12&output=embed`;
-      } catch {
-        document.getElementById("resultadoClima").innerHTML = "<p style='color:red;'>Ciudad no encontrada.</p>";
+    try {
+      const geoRes = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${ciudad}`);
+      const geoData = await geoRes.json();
+      if (geoData.length === 0) {
+        resultado.innerHTML = "<p>❌ Ciudad no encontrada.</p>";
+        return;
       }
+
+      const lat = geoData[0].lat;
+      const lon = geoData[0].lon;
+      const climaRes = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`);
+      const climaData = await climaRes.json();
+
+      const temp = climaData.current_weather.temperature;
+      const viento = climaData.current_weather.windspeed;
+
+      resultado.innerHTML = `
+        <div class="resultado">
+          🌍 <b>${ciudad}</b><br>
+          🌡 Temperatura: <b>${temp} °C</b><br>
+          💨 Viento: <b>${viento} km/h</b>
+        </div>`;
+      mapa.innerHTML = `<iframe src="https://www.google.com/maps?q=${lat},${lon}&z=12&output=embed"></iframe>`;
+    } catch {
+      resultado.innerHTML = "<p>⚠️ Error al obtener datos del clima.</p>";
     }
+  }
 
-    // === GUARDAR ALUMNOS ===
-    const formAlumno = document.getElementById("formAlumno");
-    const lista = document.getElementById("alumnosGuardados");
+  // --- CARGA DE ALUMNOS ---
+  const KEY_ALUMNOS = "alumnos_iesa";
+  const formAlumno = document.getElementById("form-alumno");
+  const tabla = document.querySelector("#tabla-alumnos tbody");
 
-    function mostrarAlumnos() {
-      const alumnos = JSON.parse(localStorage.getItem("alumnosIESA")) || [];
-      lista.innerHTML = alumnos.map(a =>
-        `<li>${a.nombre} ${a.apellido} - ${a.email} (${a.curso})</li>`).join("");
+  formAlumno.onsubmit = e => {
+    e.preventDefault();
+    const alumno = {
+      nombre: nombre.value,
+      apellido: apellido.value,
+      dni: dni.value,
+      email: email.value,
+      curso: curso.value
+    };
+    const datos = JSON.parse(localStorage.getItem(KEY_ALUMNOS) || "[]");
+    datos.push(alumno);
+    localStorage.setItem(KEY_ALUMNOS, JSON.stringify(datos));
+    formAlumno.reset();
+    cargarAlumnos();
+  };
+
+  function cargarAlumnos() {
+    const datos = JSON.parse(localStorage.getItem(KEY_ALUMNOS) || "[]");
+    tabla.innerHTML = datos.map((a, i) => `
+      <tr>
+        <td>${a.nombre}</td><td>${a.apellido}</td><td>${a.dni}</td><td>${a.email}</td><td>${a.curso}</td>
+        <td><button onclick="borrarAlumno(${i})" style="background-color:#a00000;color:white;border:1px solid black;border-radius:5px;padding:3px 8px;">Borrar</button></td>
+      </tr>`).join("");
+  }
+
+  function borrarAlumno(i) {
+    const datos = JSON.parse(localStorage.getItem(KEY_ALUMNOS) || "[]");
+    datos.splice(i, 1);
+    localStorage.setItem(KEY_ALUMNOS, JSON.stringify(datos));
+    cargarAlumnos();
+  }
+
+  cargarAlumnos();
+
+  // --- IA GENERATIVA SIMULADA ---
+  function generarRespuesta() {
+    const entrada = document.getElementById("userInput").value.trim();
+    const salida = document.getElementById("respuesta");
+    if (!entrada) {
+      salida.innerHTML = "⚠️ Escribí una pregunta para la IA.";
+      return;
     }
+    const respuestas = [
+      "La IA generativa aprende patrones a partir de datos y puede crear nuevos textos o imágenes.",
+      "Usa redes neuronales para simular la creatividad humana.",
+      "Se aplica en educación, programación y arte digital.",
+      "Combina algoritmos de aprendizaje profundo con grandes modelos de lenguaje."
+    ];
+    salida.innerHTML = respuestas[Math.floor(Math.random() * respuestas.length)];
+  }
+</script>
 
-    formAlumno.addEventListener("submit", e => {
-      e.preventDefault();
-      const alumno = {
-        nombre: nombre.value,
-        apellido: apellido.value,
-        dni: dni.value,
-        email: email.value,
-        curso: curso.value
-      };
-      const alumnos = JSON.parse(localStorage.getItem("alumnosIESA")) || [];
-      alumnos.push(alumno);
-      localStorage.setItem("alumnosIESA", JSON.stringify(alumnos));
-      formAlumno.reset();
-      mostrarAlumnos();
-    });
-
-    mostrarAlumnos();
-
-    // === FORMULARIO IA ===
-    const formIA = document.getElementById("formIA");
-    formIA.addEventListener("submit", e => {
-      e.preventDefault();
-      const r = `
-        <h3>Respuestas registradas:</h3>
-        <p><b>1.</b> ${p1.value}</p>
-        <p><b>2.</b> ${p2.value}</p>
-        <p><b>3.</b> ${p3.value}</p>
-        <p><b>4.</b> ${p4.value}</p>`;
-      document.getElementById("respuestasIA").innerHTML = r;
-      formIA.reset();
-    });
-  </script>
 </body>
 </html>
+
 
 
 
